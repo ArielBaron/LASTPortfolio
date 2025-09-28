@@ -1,0 +1,1835 @@
+﻿=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\About.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Portfolio.FinalProj.About" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+        <h2>About This Project</h2>
+<p>This website serves as my personal portfolio, showcasing my projects, skills, and experience in web development. It was built using <strong>ASP.NET WebForms</strong>, with styling implemented through <strong>CSS</strong> and additional interactivity provided by <strong>JavaScript</strong>.</p>
+
+<h3>Purpose</h3>
+<p>The main purpose of this portfolio is to provide a centralized platform for presenting my technical expertise, sharing my completed projects, and offering an accessible way for others to learn more about my work and accomplishments. Each project is accompanied by its source code, which is hosted on my <a href="https://github.com/ArielBaron" target="_blank">GitHub repositories</a>. You can find links to the corresponding repositories in the respective tabs of the site.</p>
+
+<h3>Technologies Used</h3>
+<p>During the development of this site, I utilized the following technologies and tools:</p>
+<ul>
+    <li><strong>ASP.NET WebForms:</strong> To structure the web application and manage server-side operations.</li>
+    <li><strong>CSS:</strong> For creating responsive and visually appealing layouts.</li>
+    <li><strong>JavaScript:</strong> To add dynamic functionality and improve user experience.</li>
+    <li><strong>GitHub:</strong> As a version control system and a hosting platform for my project repositories.</li>
+</ul>
+
+<h3>Development Process</h3>
+<p>The development process involved several key stages:</p>
+<ol>
+    <li><strong>Planning:</strong> Defined the structure of the portfolio and identified key features to implement.</li>
+    <li><strong>Design:</strong> Created the user interface with a focus on simplicity and responsiveness.</li>
+    <li><strong>Integration:</strong> Linked each tab to a specific GitHub repository to provide easy access to the source code.</li>
+</ol>
+
+<h3>Features</h3>
+<p>Key features of this portfolio include:</p>
+<ul>
+    <li>Separate tabs for each project with direct links to their GitHub repositories.</li>
+    <li>A trivia quiz including 10 questions.</li>
+</ul>
+
+<h3>Conclusion</h3>
+<p>This portfolio website not only serves as a professional showcase of my work but also reflects my proficiency in using WebForms, CSS, JavaScript, and ASP.NET. By linking each project to its respective GitHub repository, I aim to maintain transparency and encourage others to explore my code in detail.</p>
+
+    </div>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\About.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class About : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\AddItem.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="AddItem.aspx.cs" Inherits="Portfolio.FinalProj.AddItem" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <form method="GET" action="AddItem.aspx" >
+        <h2><%= Msg %></h2>
+        <table>
+            <tr>
+                <td>
+                    <label for="project-name">Enter Your project name:</label>
+                </td>
+                <td>
+                    <input required = "required" type="text" name="project-name" value="<%= Request.QueryString.Get("project-name") %>" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="description" required = "required" placeholder="Enter short description"><%= Request.QueryString.Get("description") %></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>How diffcult is it?</label>
+                </td>
+                <td>
+                    <input required = "required" type="range" name="diffcultyRange" value="<%= Request.QueryString.Get("diffculty") %>" min="1" max="5" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Enter email:</label>
+                </td>
+                <td>
+                    <input required = "required" type="email" name="email" value="<%=Request.QueryString.Get("email") %>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>whats your region? </label>
+                </td>
+                <td>
+                    
+                    <input  type="radio" name="region" value="Varied"  <%= Request.QueryString.Get("region") == "varied" || Request.QueryString.Get("region")== null ? "checked" : "" %>/>Varied <br />
+                    <input  type="radio" name="region" value="NA"  <%= Request.QueryString.Get("region") == "NA"  ? "checked" : "" %>/>NA <br />
+                    <input  type="radio" name="region" value="Aisa" <%= Request.QueryString.Get("region") == "Aisa" ? "checked" : "" %> /> Aisa  <br />
+                    <input  type="radio" name="region" value="Europe" <%= Request.QueryString.Get("region") == "Europe" ? "checked" : "" %> /> Europe  <br />
+                    <input  type="radio" name="region" value="MiddleEast" <%= Request.QueryString.Get("region") == "MiddleEast" ? "checked" : "" %> /> MiddleEast  <br />
+                    <input  type="radio" name="region" value="Oceania" <%= Request.QueryString.Get("region") == "Oceania" ? "checked" : "" %> /> Oceania <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Enter amount of contributors</label>
+                </td>
+                <td>
+                    <input required = "required" type="number" name="contributors-amount" value="<%= Request.QueryString.Get("contributors-amount") %>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>what languge is your project built in (we only support these)</label>
+                </td>
+                <td>
+                    <select  name="prog-lang"> 
+                        <option <%=Request.QueryString.Get("prog-lang") == "python"? "selected" : "" %> value="python">python</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "java"? "selected" : "" %> value="java">java</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "node"? "selected" : "" %> value="node">node.js</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "html"? "selected" : "" %> value="html">html, css, js</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "react"? "selected" : "" %> value="react">React</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "php"? "selected" : "" %> value="php">PHP</option>
+                        <option <%=Request.QueryString.Get("prog-lang") == "c"? "selected" : "" %> value="c">C</option>                 
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>wanted services:</label>
+                </td>
+                <td>
+                  <input  type="checkbox" name="code-cleanup" value="checked" 
+                  <%= Request.QueryString.Get("code-cleanup") == "checked" ? "checked" : "" %> /> code-cleanup
+
+                <input  type="checkbox" name="server-hosting" value="checked" 
+                  <%= Request.QueryString.Get("server-hosting") == "checked" ? "checked" : "" %> /> server-hosting
+
+                <input  type="checkbox" name="design" value="checked" 
+                  <%= Request.QueryString.Get("design") == "checked" ? "checked" : "" %> /> design
+
+                <input  type="checkbox" name="marketing" value="checked" 
+                  <%= Request.QueryString.Get("marketing") == "checked" ? "checked" : "" %> /> marketing
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input  type="submit" name="submit" value="Submit" />
+                </td>
+            </tr>          
+        </table>
+    </form>
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\AddItem.aspx.cs ===
+using Portfolio.App_Code;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class AddItem : System.Web.UI.Page
+    {
+        public string Msg = "";
+        public string proglang = "", contributors = "", email = "";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!(bool)Session["loggedin"])
+            {
+                Response.Redirect("WorngPage.aspx");
+            }
+            if (Request.QueryString.Get("submit") != null)
+            {
+                proglang = Request.QueryString.Get("prog-lang");
+                email = Request.QueryString.Get("email");
+                if (!SiteUtils.IsFilled(proglang) || !SiteUtils.IsFilled(email))
+                {
+                    Msg += "missing: progrmaing lang or email";
+                }
+                else
+                {
+                    addUserProject();
+                    // do code
+                }
+            }
+
+        }
+        protected void addUserProject()
+        {
+            string email = SiteUtils.IsFilled(Request.QueryString.Get("email"))
+                           ? "'" + Request.QueryString.Get("email") + "'"
+                           : "NULL";
+
+            string proglang = SiteUtils.IsFilled(Request.QueryString.Get("prog-lang"))
+                              ? "'" + Request.QueryString.Get("prog-lang") + "'"
+                              : "NULL";
+
+            string contributors = SiteUtils.IsFilled(Request.QueryString.Get("contributors-amount"))
+                                   ? "'" + Request.QueryString.Get("contributors-amount") + "'"
+                                   : "NULL";
+
+            string projName = SiteUtils.IsFilled(Request.QueryString.Get("project-name"))
+                              ? "'" + Request.QueryString.Get("project-name") + "'"
+                              : "NULL";
+            string region = SiteUtils.IsFilled(Request.QueryString.Get("region"))
+                              ? "'" + Request.QueryString.Get("region") + "'"
+                              : "NULL";
+            string diffcultyRange = SiteUtils.IsFilled(Request.QueryString.Get("diffcultyRange"))
+                              ? "'" + Request.QueryString.Get("diffcultyRange") + "'"
+                              : "NULL";
+            string wantDesign = SiteUtils.IsFilled(Request.QueryString.Get("design"))
+                                ? "'TRUE'"
+                                : "'FALSE'";
+
+            string wantCodeCleanup = SiteUtils.IsFilled(Request.QueryString.Get("code-cleanup"))
+                                ? "'TRUE'"
+                                : "'FALSE'";
+
+            string wantServerHosting = SiteUtils.IsFilled(Request.QueryString.Get("server-hosting"))
+                    ? "'TRUE'"
+                    : "'FALSE'";
+
+            string wantMarketing = SiteUtils.IsFilled(Request.QueryString.Get("marketing"))
+                    ? "'TRUE'"
+                    : "'FALSE'";
+            string description = SiteUtils.IsFilled(Request.QueryString.Get("description"))
+                    ? "'" + Request.QueryString.Get("description") + "'"
+                    : "NULL";
+
+            string addUserProject = "INSERT INTO UserProjects (email, proglang, projName, contributors, region, diffcultyRange, description, wantDesign, wantCodeCleanup, wantMarketing, wantServerHosting) " +
+                                    "VALUES (" + email + ", " + proglang + ", " + projName + ", " + contributors + ", " + region + ", " + diffcultyRange + ", " + description + ", " + wantDesign + ", " + wantCodeCleanup + ", " + wantMarketing + ", " + wantServerHosting + ")";
+
+            int numOfRowsAffected = DbHelper.ExecuteNonSelectQuery(addUserProject);
+
+            if (numOfRowsAffected == 1)
+            {
+                Msg = "Database activated!";
+            }
+        }
+
+    }
+}
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Admin.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="Portfolio.FinalProj.Admin" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        th, td, table {
+            border: black solid 2px;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <h1>User Registrations</h1>
+    <p><%=msg %></p>
+    <form method="GET" action="Admin.aspx">
+        <table>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Birth Date</th>
+                <th>Phone Number</th>
+                <th>Favorite Fruit</th>
+                <th>Review</th>
+                <th>Receive Email?</th>
+                <th>Region</th>
+                <th>is admin?</th>
+                <th>Delete?</th>
+            </tr>
+
+            <%
+                System.Data.DataTable dt = getUserRegistrations();
+                int userRegistrationsNum = dt.Rows.Count;
+                System.Data.DataRow currRow;
+                for (int rowIndex = 0; rowIndex < userRegistrationsNum; rowIndex++)
+                {
+                    currRow = dt.Rows[rowIndex];
+            %>
+            <tr>
+
+                <td><%= currRow["user_email"] %></td>
+                <td><%= currRow["user_name"] %></td>
+                <td><%= currRow["user_age"] %></td>
+                <td><%= currRow["birth_date"] %></td>
+                <td><%= currRow["phone_number"] %></td>
+                <td><%= currRow["fav_fruit"] %></td>
+                <td><%= currRow["user_review"] %></td>
+                <td><%= Convert.ToBoolean(currRow["include_email"]) ? "YES" : "NO" %></td>
+                <td><%= currRow["region"] %></td>
+                <td><%= (bool)currRow["is_admin"]? "YES" : "NO" %></td>
+                <td><input type="checkbox" name="deleteUser" value="<%= currRow["user_email"] %>" /></td>
+            </tr>
+
+            <% } %>
+        </table>
+        <input type="submit" name="delete" value="delete" id="delete"/>
+    </form>
+
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Admin.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Admin : System.Web.UI.Page
+    {
+        public string msg;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            {
+                if (!(bool)Session["isadmin"])
+                {
+                    Response.Redirect("WorngPage.aspx");
+                }
+                if (Request.QueryString["delete"] == "delete")
+                {
+                    string[] deletedUsers = Request.QueryString.GetValues("deleteUser");
+                    msg = deletedUsers != null ? string.Join("", deletedUsers) + " has been deleted" : "";
+                    DeleteUsers(deletedUsers); // Split the emails by comma and delete users
+                }
+            }
+        }
+            
+        protected void DeleteUsers(string[] userEmails) {
+            // SQL query to delete users from the 'users' database based on their email addresses
+            foreach (string email in userEmails)
+            {
+                String deleteUser = "DELETE FROM Users WHERE user_email = '" + email + "';";
+                DbHelper.ExecuteNonSelectQuery(deleteUser);
+            }
+        }
+        protected DataTable getUserRegistrations()
+        {
+            // SQL query to fetch all user registrations from the 'users' database
+            String getUserProjects = "SELECT * FROM Users;";
+            DataTable dt = DbHelper.ExecuteSelectQuery(getUserProjects);
+            return dt;
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\BetterMashovLive.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="BetterMashovLive.aspx.cs" Inherits="Portfolio.FinalProj.BetterMashovLive" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .img-album{
+              display: grid;
+              grid-template-columns: auto  auto auto;
+
+        }
+        .img-item{
+            width: 300px;
+            height: 250px;
+            margin-left: 5px;
+            margin-top: 20px;
+        }
+        .img-item:hover {
+            transform: scale(1.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <a target="_blank" href="https://github.com/ArielBaron/BetterMashovLive">
+        <img  src="./Assets/github.png" alt="github repo" />
+    </a>
+    <h1>Grades, Behavior and TimeTable Management System</h1>
+    <p>
+        This project is a website using <a target="_blank" href="https://npm.io/package/mashov-api">mashov api</a> that allows users to view and sort student grades And Behaviors based on various criteria such as date, grade, subject, and teacher.
+
+        In addtion it alows you see your current timetable  by the day and by subject for each hour.
+
+        The system provides a user-friendly interface for managing and displaying grades data.
+
+    </p>
+    <h1>How To Run</h1> 
+    <p>
+        All you need to do is simply run Server.js using node. <br />
+        and in addtion in MashovData.json there is all of the steps to get the info needed for login
+    </p>
+    <h1>I Now Have a Website it's Currently is only open by request to me (visit the Contact page for more info)</h1>
+    <a target="_blank" href="https://bettermashovlive.onrender.com">https://bettermashovlive.onrender.com</a>
+    <h1>Some Screenshots: (hover to zoom)</h1>
+    <div class="img-album">
+        <img src="./Assets/BetterMashovLive1.png" class="img-item" alt="Alternate Text" />
+        <img src="./Assets/BetterMashovLive2.png" class="img-item" alt="Alternate Text" />
+        <img src="./Assets/BetterMashovLive3.png" class="img-item" alt="Alternate Text" />
+        <img src="./Assets/BetterMashovLive4.png" class="img-item" alt="Alternate Text" />
+        <img src="./Assets/BetterMashovLive5.png" class="img-item" alt="Alternate Text" />
+        <img src="./Assets/BetterMashovLive6.png" class="img-item" alt="Alternate Text" />
+   </div>
+
+
+
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\BetterMashovLive.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class BetterMashovLive : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\CalcApp.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="CalcApp.aspx.cs" Inherits="Portfolio.FinalProj.CalcApp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .iframe-container {
+            width: 1000px; 
+            height: 700px;
+            border: 2px solid #ccc; 
+            margin: auto; 
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <a target="_blank" href="https://github.com/ArielBaron/Calc">
+        <img  src="./Assets/github.png" alt="github repo" />
+    </a>
+    
+    <div>
+        <h1>Calculator Project (My first project!)</h1>
+        <p>This project implements a basic calculator using HTML, CSS, and JavaScript. The calculator supports standard arithmetic operations, advanced mathematical functions, and a responsive user interface.</p>
+        <h2>This Just in: a working 24 hour based clock!</h2>
+        <h2>Features</h2>
+        <ul>
+            <li>Basic arithmetic operations: addition, subtraction, multiplication, and division.</li>
+            <li>Advanced functions: logarithms, trigonometric functions (sin, cos, tan), square root, and power.</li>
+            <li>Special constants: π (pi) and e (Euler's number).</li>
+            <li>Error handling for invalid expressions.</li>
+            <li>Dynamic display of the current system time in the header.</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <ol>
+            <li>The user clicks buttons to input numbers and operations, which are displayed dynamically in the equation area.</li>
+            <li>The <strong>"="</strong> button evaluates the entered expression using JavaScript's <code>eval()</code> function.</li>
+            <li>Special symbols (e.g., π and √) are converted into JavaScript-compatible syntax before evaluation.</li>
+            <li>Errors during evaluation are caught, and the user is informed with a "Syntax Error" message.</li>
+            <li>The <strong>"C"</strong> button clears the equation area for new input.</li>
+        </ol>
+
+        <h2>How to Run</h2>
+        <ol>
+            <li>Download all the project files and save them in the same directory.</li>
+            <li>Open the <strong>index.html</strong> file in a web browser.</li>
+            <li>Use the on-screen buttons to input equations and calculate results.</li>
+        </ol>
+
+        <h2>Example Usage</h2>
+        <p>To calculate <strong>sin(π/2)</strong>:</p>
+        <ol>
+            <li>Click <strong>sin</strong>, then <strong>π</strong>, then <strong>÷</strong>, and finally <strong>2</strong>.</li>
+            <li>Press <strong>=</strong> to display the result.</li>
+        </ol>
+
+        <h2>Demo:</h2>
+
+        <div class="iframe-container">
+                <iframe src="https://arielbaron.github.io/Calc/"></iframe>
+        </div>
+    </div>
+
+
+
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\CalcApp.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class CalcApp : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\ChangePassword.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="Portfolio.FinalProj.ChangePassword" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <h1>
+        Change password
+    </h1>
+    <h1><%=msg %></h1>
+    
+    <form  action="ChangePassword.aspx" method="POST">
+        <input required = "required" type="email" name="email" placeholder="enter email"   value="<%=Request.Form.Get("email")%>" /> <br /> 
+        <input required = "required" type="password" name="oldPassword" placeholder="enter old password" /> <br />
+        <input required = "required" type="password" name="newPassword" placeholder="enter new password" /> <br />
+        <input type="submit" name="submit" value="submit" />
+    </form>
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\ChangePassword.aspx.cs ===
+using Portfolio.App_Code;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class ChangePassword : System.Web.UI.Page
+    {
+         public string msg="";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!(bool)Session["loggedin"]) {
+                Session["failreason"] = "must login";
+                Response.Redirect("WorngPage.aspx");
+            }
+
+
+
+            string oldPassword = Request.Form["oldPassword"];
+            string newPassword = Request.Form["newPassword"];
+            string email = Request.Form["email"];
+
+
+            if (Request.Form["submit"] != null)
+            {
+                string sessionEmail = ((string)Session["email"]).Trim();
+                string requestEmail = email.Trim();
+
+                msg = "Email or passwords are invalid"; // Changes if it is valid
+                if (SiteUtils.IsFilled(oldPassword) && (SiteUtils.IsFilled(newPassword) && SiteUtils.IsEmailValid(email)))
+                {
+                    if (getValidUserData(requestEmail, oldPassword).Rows.Count == 1 ) {
+                        // valid email and password for the current session
+                        if (sessionEmail == requestEmail) {
+                            updatePassword(requestEmail, newPassword);
+                            msg = "password changed";
+                        }
+                        else
+                        {
+                            msg = "email is not the one you used to login " + email + " " + (string)Session["email"] + (email.Length
+                                == ((string)Session["email"]).Length ? " same" : " not same");
+                            msg = $"Session: [{sessionEmail}] ({sessionEmail.Length})\n" +
+                                  $"Request: [{requestEmail}] ({requestEmail.Length})\n" +
+                                  (string.Equals(sessionEmail, requestEmail, StringComparison.OrdinalIgnoreCase) ? "same" : "not same");
+                        }
+                    }
+                }                
+
+                
+            }
+
+        }
+        protected static void updatePassword(string email,string newPassword)
+        {
+            string sqlQuery = string.Format(
+                "UPDATE users SET user_password = '{0}' WHERE user_email = '{1}'",
+                newPassword, email
+            );
+            DbHelper.ExecuteNonSelectQuery(sqlQuery);
+        }
+        protected DataTable getValidUserData(string email, string password)
+        {
+            string query = $"SELECT * FROM Users WHERE user_email = '{email}' AND user_password = '{password}'";
+
+            return DbHelper.ExecuteSelectQuery(query);
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Contact.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Portfolio.FinalProj.Contact" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .img-album {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        .img-item {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+        <h1>Contact info:</h1> 
+        <p>For coding stuff contact me at my <a href="https://github.com/ArielBaron">GitHub</a> <br />
+            For personal messages contact me at my Gmail: (arielbar80@gmail.com)
+        </p>
+        <button onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=arielbar80@gmail.com&su=Hello&body=Hi%20Ariel!%20Looking%20forward%20to%20hearing%20from%20you!', '_blank')">
+            Send Email From Gmail
+        </button>
+        <br />
+        <a href="./Register.aspx">Register</a>
+        <br />
+        <a href="./AddItem.aspx">Add your project</a>
+
+        <h1>"Social media":</h1>
+
+        <div class="img-album">
+            <a target="_blank" href="https://lichess.org/@/arielbargmailcom">
+                <img src="./Assets/lichess.svg" alt="lichess" class="img-item"/>
+            </a>
+
+            <a target="_blank" href="https://www.youtube.com/channel/UCHYDuGbBe7ag407IhRq0Sog">
+                <img src="./Assets/youtube.png" alt="youtube" class="img-item" />
+            </a>
+            <a target="_blank" href="https://www.chess.com/member/gmapksjfohgu"> 
+                <img target="_blank" src="./Assets/chesscom.png" alt="chess.com" class="img-item" />
+            </a>
+            <a target="_blank" href="https://www.chess.org.il/Players/Player.aspx?Id=206245">
+                <img target="_blank" src="./Assets/ischess.png" alt="ischess" class="img-item" />
+            </a>
+        </div>
+    </div>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Contact.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Contact : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!(bool)Session["loggedin"])
+            {
+                Response.Redirect("WorngPage.aspx");
+            }
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\FlashCards.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="FlashCards.aspx.cs" Inherits="Portfolio.FinalProj.FlashCards" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #vid-div{
+            float: right;
+        }
+        #vid-div video{
+            width: 500px;
+            height: 400px;
+            border: 3px solid black;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+         <a target="_blank" href="https://github.com/ArielBaron/Train-for-Test-using-traning-cards">
+            <img  src="./Assets/github.png" alt="github repo" />
+        </a>
+        <h1>Welcome to Train for Test using Flashcards</h1>
+        <h2>What is this project?</h2>
+        <p>The "Train for Test using Flashcards" project provides a platform where users can create, edit, and use flashcards to enhance their learning and retention. It is implemented using HTML, JavaScript, and CSS to provide a responsive and interactive interface.</p>
+
+        <h2>How It Works</h2>
+        <p>The flashcards application allows users to input data, practice their knowledge, and track progress. Here's a basic workflow:</p>
+        <ul>
+            <li>The application reads user-provided flashcard data (questions and answers).</li>
+            <li>Flashcards are displayed one at a time, allowing users to guess the answer before revealing it.</li>
+            <li>Users can mark their responses as correct or incorrect, and their performance is tracked.</li>
+        </ul>
+        <div id="vid-div">
+            <h1>A video demo:</h1>
+            <video controls="controls">
+                <source src="./Assets/FlashCardsPracVid.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+        <h2>How to Input Data</h2>
+        <p>To create your own flashcards, follow these steps:</p>
+        <ol>
+            <li>prepare key and pair values like so: <br />
+                <code>
+                    branch: ענף,<br />
+                    calculate:לחשב,<br />
+                    coin: מטבע,<br />
+                </code>
+            </li>
+            <li>enter  through text:</li>
+            <li>Enter a .json or .txt flie</li>
+            
+        </ol>
+        <h2>Key Features</h2>
+        <ul>
+            <li>Create custom flashcards for any topic or subject.</li>
+            <li>Practice using an intuitive interface to test your knowledge.</li>
+            <li>Save and reuse flashcards for ongoing study.</li>
+            <li>Track your progress to identify strengths and weaknesses.</li>
+        </ul>
+
+        <h2>How to Get Started</h2>
+        <ol>
+            <li>Visit the GitHub repository, clone and run index.html: <a href="https://github.com/ArielBaron/Train-for-Test-using-traning-cards" target="_blank">Train for Test using Flashcards</a>.</li>
+            <li>Visit the: <a target="_blank" href="https://ariel-baron-flash-cards.w3spaces.com">site</a> </li>
+        </ol>
+    </div>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\FlashCards.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class FlashCards : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Home.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Portfolio.FinalProj.Home" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <style>
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .profile-picture img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-details {
+            margin-top: 20px;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .profile-picture {
+                margin-right: 20px;
+            }
+
+            .profile-details {
+                text-align: left;
+            }
+
+            .profile-picture img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+        <div class="profile-container">
+            <div class="profile-picture">
+                <img src="Assets/PersonalPicture.png" alt="Your Profile Picture">
+            </div> 
+            <div class="profile-details">
+                <h1>Ariel Baron</h1>
+                <p><strong>About Me:</strong></p>
+                <p>I am a passionate developer skilled in a variety of programming languages and technologies. I enjoy building web applications and solving challenging problems. i am located in Rehovot, Isreal. Here’s more about me:</p>
+                <h2>Technical Skills</h2>
+                <p>I have hands-on experience with the following technologies:</p>
+                <ul>
+                    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React</li>
+                    <li><strong>Backend:</strong> Node.js, Express</li>
+                    <li><strong>Databases:</strong> Mongoose, MongoDB</li>
+                    <li><strong>Other Languages:</strong> Python, Java</li>
+                </ul>
+                <h2>Hobbies and Interests</h2>
+                <p>In addition to coding, I am an avid chess player. I compete in in-person chess tournaments and love strategizing both on and off the board.</p>
+                <p>You can view my chess profile for detailed statistics and achievements: <a href="https://www.chess.org.il/Players/Player.aspx?Id=206245" target="_blank">My Chess Profile</a>.</p>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Home.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Home : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Leaderboards.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Leaderboards.aspx.cs" Inherits="Portfolio.FinalProj.Leaderboards" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <h1>The Best Score is <%=Application["Highscore"] %></H1>
+</Asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Leaderboards.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Leaderboards : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Login.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Portfolio.FinalProj.Login" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <%=msg %>
+    <form action="Login.aspx" method="post">
+        <input required="required" type="email" name="email" placeholder="enter email"  
+               value="<%= Request.Form.Get("email") %>" /> <br />
+        <input required="required" type="password" name="password" placeholder="enter password"/> <br />
+        <input type="submit" name="login" id="login" value="login" />
+    </form>
+
+    <a href="Register.aspx">Don't have an account? Register here!</a>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Login.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Portfolio.App_Code;
+namespace Portfolio.FinalProj
+{
+
+    public partial class Login : System.Web.UI.Page
+    {
+        public string msg = "";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if ((bool)Session["loggedin"])
+            {
+                Response.Redirect("WorngPage.aspx");
+            }
+
+            string email = Request.Form["email"];
+            string password = Request.Form["password"];
+            if (Request.Form.Get("login") != null)
+            {
+                if (SiteUtils.IsFilled(password) && SiteUtils.IsEmailValid(email))
+                {
+                    DataTable user = getValidUserData(email, password);
+                    if (user.Rows.Count == 1)
+                    {
+                        DataRow row = user.Rows[0];
+                        Session["loggedin"] = true;
+                        Session["isadmin"] = (bool)row["is_admin"];
+                        Session["username"] = (string)row["user_name"];
+                        Session["email"] = (string)row["user_email"];
+                        Response.Redirect("Home.aspx");
+                    }
+                    else
+                    {
+                        msg = "Email or password is invalid";
+                    }
+                }
+            }
+        }
+
+
+        protected DataTable getValidUserData(string email, string password)
+        {
+            string query = $"SELECT * FROM Users WHERE user_email = '{email}' AND user_password = '{password}'";
+
+            return DbHelper.ExecuteSelectQuery(query);
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Logout.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Logout.aspx.cs" Inherits="Portfolio.FinalProj.Logout" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <form method="POST" action="Logout.aspx">
+        <h1>Logout</h1> <br />
+        <input type="submit" name="logout" value="logout" />
+    </form>
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Logout.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Logout : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Request.QueryString["logout"] != null) { 
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\ProjectsTable.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="ProjectsTable.aspx.cs" Inherits="Portfolio.FinalProj.ProjectsTable" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        th, td, table {
+            border: black solid 2px;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <h1>User Projects</h1>
+    <p><%=msg %></p>
+    <form action="ProjectsTable.aspx" />
+        <table>
+            <tr>
+                <th>Email</th>
+                <th>Programming Language</th>
+                <th>Contributors</th>
+                <th>Difficulty</th>
+                <th>Region</th>
+                <th>Description</th>
+                <th>Want Design?</th>
+                <th>Want Server Hosting?</th>
+                <th>Want Marketing?</th>
+                <th>Want Code Cleanup?</th>
+                <th>Delete?</th>
+            </tr>
+
+            <%
+                System.Data.DataTable dt = getUserProjects();
+                int userProjectsNum = dt.Rows.Count;
+                System.Data.DataRow currRow;
+                for (int rowIndex = 0; rowIndex < userProjectsNum; rowIndex++)
+                {
+                    currRow = dt.Rows[rowIndex];
+            %>
+            <tr>
+                <td><%= currRow["email"] %></td>
+                <td><%= currRow["progLang"] %></td>
+                <td><%= currRow["contributors"] %></td>
+                <td><%= currRow["diffcultyRange"] %></td>
+                <td><%= currRow["region"] %></td>
+                <td><%= currRow["description"] %></td>
+                <td><%= Convert.ToBoolean(currRow["wantDesign"]) ? "YES" : "NO" %></td>
+                <td><%= Convert.ToBoolean(currRow["wantServerHosting"]) ? "YES" : "NO" %></td>
+                <td><%= Convert.ToBoolean(currRow["wantMarketing"]) ? "YES" : "NO" %></td>
+                <td><%= Convert.ToBoolean(currRow["wantCodeCleanup"]) ? "YES" : "NO" %></td>
+                <td><input type="checkbox" name="deleteProject" value="<%= currRow["email"] %>" /></td>
+
+            </tr>
+            <% } %>
+        </table>
+        <input type="submit" name="delete" value="delete" id="delete"/>
+    </>
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\ProjectsTable.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class ProjectsTable : System.Web.UI.Page
+    {
+        public string msg;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!(bool)Session["isadmin"])
+            {
+                Response.Redirect("WorngPage.aspx");
+            }
+            if (Request.QueryString["delete"] == "delete")
+            {
+                string[] deletedProjects = Request.QueryString.GetValues("deleteProject");
+
+                if (deletedProjects != null)
+                {
+                    msg = string.Join("", deletedProjects) + " has been deleted";
+                    DeleteUserProjects(deletedProjects); // Only call if not null
+                }
+                else
+                {
+                    msg = "";
+                }
+            }
+        }
+
+        protected void DeleteUserProjects(string[] ProjectsEmails)
+        {
+            foreach (string email in ProjectsEmails)
+            {
+                string deleteUser = "DELETE FROM UserProjects WHERE email = '" + email + "';";
+                DbHelper.ExecuteNonSelectQuery(deleteUser);
+            }
+        }
+
+        protected DataTable getUserProjects()
+        {
+            string getUserProjects = "SELECT * FROM UserProjects;";
+            DataTable dt = DbHelper.ExecuteSelectQuery(getUserProjects);
+            return dt;
+        }
+    }
+}
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Register.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Portfolio.FinalProj.Register" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function areInputsValid() {
+            const messageElement = document.getElementById("message");
+            const userDate = document.getElementById("user-date").value;
+            const year = userDate.substring(0, 4);
+            const userAge = parseInt(document.getElementById("user-age").value);
+            const userName = document.getElementById("user-name").value;
+            let message = "";
+            //Extra:
+            //if (userAge <= 0 || userAge >= 150) {
+            //    message += "age ("+userAge+")  must be above 0 and below 150 \n";   
+            //} 
+            //if (year<1900  || year > 2025) {
+            //    message += "Year ("+year+") must be between 1900 to 2025 \n"
+            //}
+            // What was asked:
+            if (strHasSpecialChars(userName)) {
+                message += "username must not have Special Chars\n";
+            }
+            if (userName.trim() !== userName) {
+                message +="username must not have Leading Or Trailing Spaces\n"
+            }
+            message += strHasConsecutiveSpaces(userName) ? // Another way to write if
+                "username must not have Consecutive Spaces\n" : "";
+            
+
+            
+            
+            messageElement.innerText = message;
+            return message == "";
+        }
+        function strHasSpecialChars(str) { // Spaces are allowed (following a standart)
+            const specialChars = "0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; 
+            for (let i = 0; i < str.length; i++) {
+                if (specialChars.includes(str[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        function strHasConsecutiveSpaces(str) { // can be simplfied: str.includes("  ")
+            for (let i = 0; i < str.length - 1; i++) {
+                if (str[i] === " " && str[i + 1] === " ") {
+                    return true;
+                }
+            }
+            return false;
+        }
+           
+        
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <form action="Register.aspx" method="post" onsubmit="return areInputsValid();">
+        <h1>Enter your info to register to my site:</h1>
+        <a href="Login.aspx">Already have an account? click here to login!</a>
+        <h2><%=msg %> </h2> 
+        <p id="message"></p>
+        <label>Enter color</label>
+        <input required = "required" type="color" name="fav-color" value="<%= Request.Form.Get("fav-color") %>" /><br />
+        
+        <label>Enter name</label>
+        <input required = "required" type="text" name="user-name"  id="user-name" value="<%= Request.Form.Get("user-name") %>" /><br />
+
+        <label>Enter age</label>
+        <input required = "required" type="number" name="user-age" id="user-age" value="<%= isSubmitted ? Request.Form.Get("user-age") : "" %>" /><br />
+        
+        <label>Enter a your birth date</label>
+        <input required = "required" type="date" name="birth-date" id="user-date" value="<%= Request.Form.Get("birth-date") %>" /><br />
+        
+        
+        <label>Enter email</label>
+        <input required = "required" type="email" name="user-email" value="<%= Request.Form.Get("user-email") %>" /><br />
+
+        
+        <label>Enter password</label>
+        <input required = "required" type="password" name="user-password" value="<%= Request.Form.Get("user-password") %>" /><br />
+
+        
+        <label>Enter telephone</label>
+        <input required = "required" type="tel" title="Phone" name="phone-number" value="<%= Request.Form.Get("phone-number") %>" /><br />
+ 
+        
+        <label>Enter your favorite fruit (choose 1 from 3)</label><br />
+        <input required = "required" type="radio" name="fav-fruit" value="banana" <%= Request.Form.Get("fav-fruit") == "banana" ? "checked" : "" %> />banana <br />
+        <input required = "required" type="radio" name="fav-fruit" value="blueberry" <%= Request.Form.Get("fav-fruit") == "blueberry" ? "checked" : "" %> />blueberry<br />
+        <input required = "required" type="radio" name="fav-fruit" value="melon" <%= Request.Form.Get("fav-fruit") == "melon" ? "checked" : "" %> />melon<br />
+
+        
+        <label>Pick level of satisfaction</label>
+        <input required = "required" type="range" name="userReview" min="1" max="10" value="<%= Request.Form.Get("userReview") %>" /><br />
+
+        
+        <label>Do you want to get messages to your email</label>
+        <input  type="checkbox" name="includeEmail" value="checked" <%= Request.Form.Get("includeEmail") == "checked" ? "checked" : "" %> /><br />
+
+        
+        <label>Enter your region</label>
+        <select name="region">
+            <option value="EU" <%= Request.Form.Get("region") == "EU" ? "selected" : "" %> >EU</option>
+            <option value="ASIA" <%= Request.Form.Get("region") == "ASIA" ? "selected" : "" %> >ASIA</option>
+            <option value="US" <%= Request.Form.Get("region") == "US" ? "selected" : "" %> >US</option>
+            <option value="NA" <%= Request.Form.Get("region") == "NA" ? "selected" : "" %> >NA</option>
+        </select><br />
+
+        
+        <input  type="reset" value="Reset" />
+        <input  type="submit" name="submit" value="Submit" /><br />
+    </form>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Register.aspx.cs ===
+using Portfolio.App_Code;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Register : System.Web.UI.Page
+    {
+        public string msg = "";
+        public bool includeEmail;
+        public string color, name = "", birthDate, email, password, telephone, favFruit, region, age = "";
+        public int rating;
+        public bool isSubmitted;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+            if ((bool)Session["loggedin"])
+            {
+                Response.Redirect("WorngPage.aspx");
+            }
+            isSubmitted = Request.Form.Get("submit") == "Submit";
+            if (isSubmitted)
+            {
+                color = Request.Form.Get("fav-color");
+                name = Request.Form.Get("user-name");
+                age = Request.Form.Get("user-age");
+                birthDate = Request.Form.Get("birth-date");
+                email = Request.Form.Get("user-email");
+                password = Request.Form.Get("user-password");
+                telephone = Request.Form.Get("phone-number");
+                favFruit = Request.Form.Get("fav-fruit");
+                region = Request.Form.Get("region");
+                rating = int.Parse(Request.Form.Get("userReview"));
+                                  
+                includeEmail = Request.Form.Get("includeEmail") == "checked";
+                // Validation
+                if (!SiteUtils.IsFilled(email) || !SiteUtils.IsFilled(password) || !SiteUtils.IsFilled(telephone))
+                {
+                    msg = "Email, password, and phone number are mandatory.";
+                }
+                else if (!SiteUtils.IsEmailValid(email))
+                {
+                    msg = "Email is invalid.";
+                }
+                else
+                {
+                    addUserRegistration();
+                }
+            }
+        }
+
+        protected void addUserRegistration()
+        {
+            string color = SiteUtils.IsFilled(Request.Form.Get("fav-color"))
+                ? "'" + Request.Form.Get("fav-color") + "'"
+                : "NULL";
+
+            string name = SiteUtils.IsFilled(Request.Form.Get("user-name"))
+                ? "'" + Request.Form.Get("user-name") + "'"
+                : "NULL";
+
+            string age = SiteUtils.IsFilled(Request.Form.Get("user-age"))
+                ? "'" + Request.Form.Get("user-age") + "'"
+                : "NULL";
+
+            string birthDate = SiteUtils.IsFilled(Request.Form.Get("birth-date"))
+                ? "'" + Request.Form.Get("birth-date") + "'"
+                : "NULL";
+
+            string email = SiteUtils.IsFilled(Request.Form.Get("user-email"))
+                ? "'" + Request.Form.Get("user-email") + "'"
+                : "NULL";
+
+            string password = SiteUtils.IsFilled(Request.Form.Get("user-password"))
+                ? "'" + Request.Form.Get("user-password") + "'"
+                : "NULL";
+
+            string telephone = SiteUtils.IsFilled(Request.Form.Get("phone-number"))
+                ? "'" + Request.Form.Get("phone-number") + "'"
+                : "NULL";
+
+            string favFruit = SiteUtils.IsFilled(Request.Form.Get("fav-fruit"))
+                ? "'" + Request.Form.Get("fav-fruit") + "'"
+                : "NULL";
+
+            string userReview = SiteUtils.IsFilled(Request.Form.Get("userReview"))
+                ? "'" + Request.Form.Get("userReview") + "'"
+                : "NULL";
+
+            string includeEmail = Request.Form.Get("includeEmail") == "checked" ? "'TRUE'" : "'FALSE'";
+
+            string region = SiteUtils.IsFilled(Request.Form.Get("region"))
+                ? "'" + Request.Form.Get("region") + "'"
+                : "NULL";
+
+            string insertQuery = "INSERT INTO Users (fav_color, user_name, user_age, birth_date, user_email, user_password, phone_number, fav_fruit, user_review, include_email, region, is_admin) " +
+                                 "VALUES (" + color + ", " + name + ", " + age + ", " + birthDate + ", " + email + ", " + password + ", " + telephone + ", " + favFruit + ", " + userReview + ", " + includeEmail + ", " + region + ", 'FALSE')";
+
+            int rowsAffected = DbHelper.ExecuteNonSelectQuery(insertQuery);
+
+            if (rowsAffected == 1)
+            {
+                msg = "User registered successfully!";
+            }
+            else
+            {
+                msg = "Failed to register user.";
+            }
+        }
+
+    }
+}
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\TicTacToeInJava.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="TicTacToeInJava.aspx.cs" Inherits="Portfolio.FinalProj.TicTacToeInJava" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+        <a target="_blank" href="https://github.com/ArielBaron/TicTacToeInJava">
+            <img  src="./Assets/github.png" alt="github repo" />
+        </a>
+        <h1>Tic Tac Toe in Java</h1>
+        <p>This is a simple command-line Tic Tac Toe game implemented in Java. The game supports both human-vs-human and human-vs-bot modes with a clean and interactive interface.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Play Tic Tac Toe with another human or against a bot.</li>
+            <li>Clear instructions and user-friendly prompts for moves.</li>
+            <li>Automatic validation of moves to prevent overwriting squares.</li>
+            <li>Custom logic for determining game results: win, lose, or draw.</li>
+            <li>Replay functionality for continuous enjoyment.</li>
+        </ul>
+
+        <h2>How It Works</h2>
+        <p>The game board consists of 9 squares represented as a list. Players take turns selecting squares to place their mark (X or O). The game ends when a player aligns three of their marks in a row, column, or diagonal, or when all squares are filled without a winner (draw).</p>
+
+        <h2>Game Modes</h2>
+        <ol>
+            <li><strong>Human vs. Human:</strong> Both players take turns inputting their moves.</li>
+            <li><strong>Human vs. Bot:</strong> Play against a bot with simple random-move logic.</li>
+        </ol>
+
+        <h2>Instructions</h2>
+        <ol>
+            <li>Run the program in a terminal using a Java runtime environment.</li>
+            <li>Follow the prompts to choose your game mode:
+                <ul>
+                    <li>Enter <code>11</code> for Human vs. Bot mode.</li>
+                    <li>Enter <code>10</code> to reset the game board.</li>
+                </ul>
+            </li>
+            <li>Choose a square to place your mark by entering a number from <code>1</code> to <code>9</code>.</li>
+            <li>The game will notify you of the result (win, draw, or continue).</li>
+        </ol>
+
+        <h2>Requirements (Only for manual Setup)</h2>
+        <ul>
+            <li>Java Development Kit (JDK) 8 or higher.</li>
+            <li>A terminal or command prompt to run the program.</li>
+        </ul>
+
+        <h2>How to Run (Easy Setup)</h2>
+        <p>
+            <strong>enter this link and press "Run" **</strong> <br />
+                <a href="https://onlinegdb.com/EmQlTgmV1" target="_blank">Here</a>
+        </p>
+        <h2>Or the manual Setup:</h2>
+        <ol>
+            <li>Download the <code>Main.java</code> file.</li>
+            <li>Compile the program using the following command:
+                <pre><code>javac Main.java</code></pre>
+            </li>
+            <li>Run the program:
+                <pre><code>java Main</code></pre>
+            </li>
+        </ol>
+
+    </div>
+</asp:Content>
+
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\TicTacToeInJava.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class TicTacToeInJava : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Trivia.aspx ===
+<%@ Page Title="" Language="C#" MasterPageFile="~/FinalProj/Master.Master" AutoEventWireup="true" CodeBehind="Trivia.aspx.cs" Inherits="Portfolio.FinalProj.Trivia" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .result-box {
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .result-title {
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-score {
+            color: #27ae60;
+        }
+
+        .result-message {
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+        input[type="radio"] {
+            transform: scale(3); /* Scale the radio button to 1.5x its size */
+                       
+            margin: 13px;       /* Add some space between the radio button and label */
+            
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
+    <div>
+        <form method="GET" action="Trivia.aspx">
+            <%=msg %>
+            <%
+                if (isSubmitted) {
+                    if (bools[0]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            
+            <h1>1. What programming langs do i use:</h1>
+            <input required = "required" type="radio" name="q1" value="a" <%= (char.ToLower(answers[0]) == 'a') ? checkedStr : "" %> />
+            <label>PYTHON Java HTML JS</label> <br />
+            <input required = "required" type="radio" name="q1" value="B" <%= (char.ToLower(answers[0]) == 'b') ? checkedStr : "" %> />
+            <label>JS HTML CSS PYTHON Node.js MongosseDB Express Puppter React</label> <br />
+            <input required = "required" type="radio" name="q1" value="c" <%= (char.ToLower(answers[0]) == 'c') ? checkedStr : "" %> />
+            <label>HTML Scala Java HTML JS CSS</label> <br />
+            <input required = "required" type="radio" name="q1" value="d" <%= (char.ToLower(answers[0]) == 'd') ? checkedStr : "" %> />
+            <label>Hebrew Russian Romanian</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[1]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>2. Where do I live:</h1>
+            <input required = "required" type="radio" name="q2" value="A" <%= (char.ToLower(answers[1]) == 'a') ? checkedStr : "" %> />
+            <label>Rehovot</label> <br />
+            <input required = "required" type="radio" name="q2" value="b" <%= (char.ToLower(answers[1]) == 'b') ? checkedStr : "" %> />
+            <label>Tel Aviv</label> <br />
+            <input required = "required" type="radio" name="q2" value="c" <%= (char.ToLower(answers[1]) == 'c') ? checkedStr : "" %> />
+            <label>Moscow</label> <br />
+            <input required = "required" type="radio" name="q2" value="d" <%= (char.ToLower(answers[1]) == 'd') ? checkedStr : "" %> />
+            <label>Berlin</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[2]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>3. What's my first project:</h1>
+            <input required = "required" type="radio" name="q3" value="a" <%= (char.ToLower(answers[2]) == 'a') ? checkedStr : "" %> />
+            <label>BetterMashovLive</label> <br />
+            <input required = "required" type="radio" name="q3" value="b" <%= (char.ToLower(answers[2]) == 'b') ? checkedStr : "" %> />
+            <label>FlashCards</label> <br />
+            <input required = "required" type="radio" name="q3" value="C" <%= (char.ToLower(answers[2]) == 'c') ? checkedStr : "" %> />
+            <label>Calc</label> <br />
+            <input required = "required" type="radio" name="q3" value="d" <%= (char.ToLower(answers[2]) == 'd') ? checkedStr : "" %> />
+            <label>TicTacToe</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[3]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>4. What's my rating on chess.com:</h1>
+            <input required = "required" type="radio" name="q4" value="A" <%= (char.ToLower(answers[3]) == 'a') ? checkedStr : "" %> />
+            <label>between 1100 to 1600</label> <br />
+            <input required = "required" type="radio" name="q4" value="b" <%= (char.ToLower(answers[3]) == 'b') ? checkedStr : "" %> />
+            <label>between 500 to 1000</label> <br />
+            <input required = "required" type="radio" name="q4" value="c" <%= (char.ToLower(answers[3]) == 'c') ? checkedStr : "" %> />
+            <label>100</label> <br />
+            <input required = "required" type="radio" name="q4" value="d" <%= (char.ToLower(answers[3]) == 'd') ? checkedStr : "" %> />
+            <label>between 2000 to 3000</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[4]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>5. Where do I study:</h1>
+            <input required = "required" type="radio" name="q5" value="a" <%= (char.ToLower(answers[4]) == 'a') ? checkedStr : "" %> />
+            <label>Ort</label> <br />
+            <input required = "required" type="radio" name="q5" value="B" <%= (char.ToLower(answers[4]) == 'b') ? checkedStr : "" %> />
+            <label>Katzir</label> <br />
+            <input required = "required" type="radio" name="q5" value="c" <%= (char.ToLower(answers[4]) == 'c') ? checkedStr : "" %> />
+            <label>de Shalit</label> <br />
+            <input required = "required" type="radio" name="q5" value="d" <%= (char.ToLower(answers[4]) == 'd') ? checkedStr : "" %> />
+            <label>madaim</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[5]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>6. What's my gmail:</h1>
+            <input required = "required" type="radio" name="q6" value="a" <%= (char.ToLower(answers[5]) == 'a') ? checkedStr : "" %> />
+            <label>arielbaron@gmail.com</label> <br />
+            <input required = "required" type="radio" name="q6" value="b" <%= (char.ToLower(answers[5]) == 'b') ? checkedStr : "" %> />
+            <label>TheArielOfTheBaronOfTheGreatPlaceForTheFuture@gmail.com</label> <br />
+            <input required = "required" type="radio" name="q6" value="c" <%= (char.ToLower(answers[5]) == 'c') ? checkedStr : "" %> />
+            <label>aarieelbbar80@gmail.com</label> <br />
+            <input required = "required" type="radio" name="q6" value="D" <%= (char.ToLower(answers[5]) == 'd') ? checkedStr : "" %> />
+            <label>arielbar80@gmail.com</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[6]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>7. How many GitHub repos do I currently have:</h1>
+            <input required = "required" type="radio" name="q7" value="a" <%= (char.ToLower(answers[6]) == 'a') ? checkedStr : "" %> />
+            <label>3-5 repos</label> <br />
+            <input required = "required" type="radio" name="q7" value="b" <%= (char.ToLower(answers[6]) == 'b') ? checkedStr : "" %> />
+            <label>1000+ repos</label> <br />
+            <input required = "required" type="radio" name="q7" value="C" <%= (char.ToLower(answers[6]) == 'c') ? checkedStr : "" %> />
+            <label>18 - 50 repos</label> <br />
+            <input required = "required" type="radio" name="q7" value="d" <%= (char.ToLower(answers[6]) == 'd') ? checkedStr : "" %> />
+            <label>5 - 8 repos</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[7]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>8. In what grade am I:</h1>
+            <input required = "required" type="radio" name="q8" value="A" <%= (char.ToLower(answers[7]) == 'a') ? checkedStr : "" %> />
+            <label>10th grade</label> <br />
+            <input required = "required" type="radio" name="q8" value="b" <%= (char.ToLower(answers[7]) == 'b') ? checkedStr : "" %> />
+            <label>12th grade</label> <br />
+            <input required = "required" type="radio" name="q8" value="c" <%= (char.ToLower(answers[7]) == 'c') ? checkedStr : "" %> />
+            <label>2nd grade</label> <br />
+            <input required = "required" type="radio" name="q8" value="d" <%= (char.ToLower(answers[7]) == 'd') ? checkedStr : "" %> />
+            <label>9th grade</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[8]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>9. What two things do I study in school:</h1>
+            <input required = "required" type="radio" name="q9" value="a" <%= (char.ToLower(answers[8]) == 'a') ? checkedStr : "" %> />
+            <label>Websites and functional programming</label> <br />
+            <input required = "required" type="radio" name="q9" value="b" <%= (char.ToLower(answers[8]) == 'b') ? checkedStr : "" %> />
+            <label>Databases and backend</label> <br />
+            <input required = "required" type="radio" name="q9" value="c" <%= (char.ToLower(answers[8]) == 'c') ? checkedStr : "" %> />
+            <label>Math and literature</label> <br />
+            <input required = "required" type="radio" name="q9" value="D" <%= (char.ToLower(answers[8]) == 'd') ? checkedStr : "" %> />
+            <label>Websites and object-oriented programming (Java)</label> <br />
+
+            <%
+                if (isSubmitted) {
+                    if (bools[9]) {
+                        Response.Write(correctRes);
+                    } else {
+                        Response.Write(incorrectRes);
+                    }
+                }
+            %>
+            <h1>10. What's my biggest project out of the four on this site (by number of files):</h1>
+            <input required = "required" type="radio" name="q10" value="A" <%= (char.ToLower(answers[9]) == 'a') ? checkedStr : "" %> />
+            <label>BetterMashovLive</label> <br />
+            <input required = "required" type="radio" name="q10" value="b" <%= (char.ToLower(answers[9]) == 'b') ? checkedStr : "" %> />
+            <label>FlashCards</label> <br />
+            <input required = "required" type="radio" name="q10" value="c" <%= (char.ToLower(answers[9]) == 'c') ? checkedStr : "" %> />
+            <label>Calc</label> <br />
+            <input required = "required" type="radio" name="q10" value="d" <%= (char.ToLower(answers[9]) == 'd') ? checkedStr : "" %> />
+            <label>TicTacToe</label> <br />
+
+            <div class="result-box">
+                <h2 class="result-title">
+
+                     <%=isSubmitted? "Your Grade: <span class='result-score'>" + bools.Count(b => b) + "</span> / 10" : "Here Will be you Result"%>
+                </h2>
+                <p class="result-message">
+                    <%=isSubmitted? bools.Count(b => b) < 10? "Excellent effort! Review your mistakes and aim for perfection next time." : "Great job! you got every question correct." : ""%>
+                </p>
+            </div>
+
+            <input  type="submit" name="submit" value="Submit" />
+            <input  type="submit" name="reset" value="Reset" />
+        </form>
+    </div>
+</asp:Content>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\Trivia.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class Trivia : System.Web.UI.Page
+    {
+        public bool[] bools;
+        public char[] answers;
+        public bool isSubmitted;
+        public string correctRes = "<h2 style=\"color: green\">Correct Answer</h2>";
+        public string incorrectRes = "<h2 style=\"color: red\">Incorrect Answer</h2>";
+        public string checkedStr = "checked='checked'";
+        public string msg = "";
+        
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+
+            if (!(bool)Session["loggedin"])
+            {
+                Session["failreason"] = "must login";
+                Response.Redirect("WorngPage.aspx");
+            }
+            bools = new bool[10];
+            answers = new char[10];
+
+            for (int i = 0; i < answers.Length; i++)
+            {
+                answers[i] = 'u'; // Initialize answers to 'u' (unanswered)
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                bools[i] = false; // Initialize bools to false (not answered)
+            }
+
+            string curAnswerVal;
+            if (Request.QueryString.Get("resetart") == "Reset") {
+                restPage();
+                
+            }
+            isSubmitted = Request.QueryString.Get("submit") == "Submit";
+            
+            if (isSubmitted)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    curAnswerVal = Request.QueryString.Get("q" + (i + 1).ToString()); // Query string uses "q1", "q2", ..., "q10"
+
+                    if (!string.IsNullOrEmpty(curAnswerVal))
+                    {
+                        answers[i] = curAnswerVal[0]; // Store the first character of the answer
+
+                        if (curAnswerVal[0] >= 'A' && curAnswerVal[0] <= 'Z') // if uppercase correct
+                        {
+                            bools[i] = true; // Mark as answered
+                        }
+                    }
+                    else if (curAnswerVal == null)
+                    {
+                        msg += $"{i + 1}, hasnt been chosen " + curAnswerVal;
+                        isSubmitted = false;
+                    }
+                }
+                if (bools.Count(b => b) > (int)Application["highscore"]) {
+                    Application["highscore"] = bools.Count(b => b);
+                }
+            }
+        }
+        protected void restPage() {
+            Response.Redirect("Trivia.aspx");
+            
+
+        }
+    }
+}
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\WorngPage.aspx ===
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WorngPage.aspx.cs" Inherits="Portfolio.FinalProj.WorngPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Access Denied</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f9f9f9;
+        }
+        .message {
+            font-size: 24px;
+            color: #cc0000;
+        }
+        .link {
+            margin-top: 20px;
+            display: block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="message">
+            ❌  access denied due to the folowing reason:
+            <%=Session["failreason"] %>
+        </div>
+        <%if ((String)Session["failreason"] != "must login")
+            {
+                Response.Write("        <a class=\"link\" href=\"Login.aspx\">🔁 Return to Login</a>\r\n");
+            } 
+        %>
+        <a class="link" href="Home.aspx">🏠 Return to Home</a>
+    </form>
+</body>
+</html>
+
+=== C:\Users\ariel\Desktop\projects\TABA\Portfolio\Portfolio\FinalProj\WorngPage.aspx.cs ===
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Portfolio.FinalProj
+{
+    public partial class WorngPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
